@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  custom.cnf: |
+    [mysqld]
+     max_connections=100
+     character-set-server=utf8mb4
+     collation-server=utf8mb4_unicode_ci
+     slow_query_log=1
+     long_query_time=2
