@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backup-job
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: backup
+          image: busybox:latest
+          command:
+            - "sh"
+            - "-c"
+            - "echo 'Starting backup...'; sleep5; echo 'Backup completed at' $(date); echo 'Backup file: backup-$(date +%s).tar.gz'"
